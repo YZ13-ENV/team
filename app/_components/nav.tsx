@@ -6,6 +6,10 @@ import { useMemo } from "react"
 const map = [
   {
     value: '/',
+    label: 'Обзор'
+  },
+  {
+    value: '/dashboard',
     label: 'Управление командой'
   },
   {

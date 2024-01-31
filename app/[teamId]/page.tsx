@@ -7,7 +7,7 @@ export default async function Home() {
   const teamId = short ? short.teamId : null
   const teamInfo = teamId ? await team.get(teamId) : null
   return (
-    <div style={{ height: 'calc(100% - 36px)' }} className="w-full pt-4 max-w-7xl mx-auto flex flex-col max-h-full overflow-y-auto gap-4">
+    <div style={{ height: 'calc(100% - 36px)' }} className="w-full pt-4 max-w-7xl mx-auto flex flex-col max-h-full gap-4">
       <div className="w-fit h-fit flex flex-col gap-2 py-12">
         <div className="w-fit h-fit flex items-center gap-4">
           <div className="w-24 h-24 rounded-full bg-muted"></div>
@@ -27,7 +27,7 @@ export default async function Home() {
           <span className='text-lg font-medium'>О команде</span>
           <span className="text-muted-foreground text-sm">Что-то о команде</span>
         </div>
-        <div className="w-1/3 grid grid-cols-2 grid-rows-2 gap-2">
+        <div className="w-1/3 grid lg:grid-cols-2 grid-cols-1 lg:grid-rows-2 grid-rows-4 gap-2">
           <div className="w-full h-full flex flex-col justify-center">
             <span className="text-xs text-muted-foreground">Сайт</span>
             <span className="text-sm line-clamp-1 text-accent-foreground">https://darkmaterial.space</span>

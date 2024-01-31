@@ -12,7 +12,7 @@ const page = () => {
       </div>
       <div className="w-full pt-3">
         <div className="w-full max-w-3xl mx-auto h-fit flex items-center gap-4">
-          <Input />
+          <Input placeholder="Введите ник пользователя..." />
           <Button>Найти</Button>
         </div>
         <div className="w-full h-full max-w-3xl mx-auto flex flex-col py-4">

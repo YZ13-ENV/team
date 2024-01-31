@@ -6,7 +6,7 @@ import { Textarea } from 'ui'
 
 const page = () => {
   return (
-    <div className="flex flex-col w-full overflow-y-auto max-h-full">
+    <div className="flex flex-col w-full max-h-full">
       <div className="max-w-7xl mx-auto w-full py-12">
         <span className="text-4xl font-bold">Настройки</span>
       </div>

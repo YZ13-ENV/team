@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { user } from "api"
 import { BiDotsVerticalRounded } from "react-icons/bi"
+import { Avatar } from "ui"
 
 type Props = {
   member: string
@@ -14,7 +15,11 @@ const MemberRow = async({ member }: Props) => {
       <td className="w-6 px-1"><Checkbox /></td>
       <td className="border-r px-3">
         <div className="w-fit h-fit flex flex-row items-center gap-2">
-            <div className='w-7 h-7 rounded-full bg-muted'/>
+            {
+              data.photoUrl
+              ? <Avatar src={data.photoUrl} size={28} />
+              : <div className='w-7 h-7 rounded-full bg-muted'/>
+            }
             <span className="font-medium">{ data.displayName }</span>
         </div>
       </td>

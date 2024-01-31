@@ -1,12 +1,16 @@
+'use client'
+import { auth } from '@/utils/app'
+import { useAuthState } from 'react-firebase-hooks/auth'
+
 type Props = {
   noTeam?: boolean
   children: JSX.Element | JSX.Element[]
 }
 const TeamContainer = ({ children, noTeam=true }: Props) => {
+  const [user] = useAuthState(auth)
   return (
-    <div style={{ height: noTeam ? '10%' : 'calc(100% - 136px)' }}
-    className="max-w-screen-2xl w-full rounded-t-2xl border-x border-t mt-auto bg-card mx-auto p-6">
-      { children }
+    <div className="w-full h-full border-t mx-auto p-6">
+      { user && children }
     </div>
   )
 }

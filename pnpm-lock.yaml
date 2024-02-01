@@ -25,7 +25,7 @@ dependencies:
     version: 3.7.9(react@18.2.0)
   api:
     specifier: github:yz13-env/api
-    version: github.com/yz13-env/api/e7d565ff369b4adfed5a6429837b90aca5eea08d(react-dom@18.2.0)(react@18.2.0)
+    version: github.com/yz13-env/api/8f12394ab8361cfb29676ed5fc9fe73d921f97e7(react-dom@18.2.0)(react@18.2.0)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -4682,9 +4682,9 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  github.com/yz13-env/api/e7d565ff369b4adfed5a6429837b90aca5eea08d(react-dom@18.2.0)(react@18.2.0):
-    resolution: {tarball: https://codeload.github.com/yz13-env/api/tar.gz/e7d565ff369b4adfed5a6429837b90aca5eea08d}
-    id: github.com/yz13-env/api/e7d565ff369b4adfed5a6429837b90aca5eea08d
+  github.com/yz13-env/api/8f12394ab8361cfb29676ed5fc9fe73d921f97e7(react-dom@18.2.0)(react@18.2.0):
+    resolution: {tarball: https://codeload.github.com/yz13-env/api/tar.gz/8f12394ab8361cfb29676ed5fc9fe73d921f97e7}
+    id: github.com/yz13-env/api/8f12394ab8361cfb29676ed5fc9fe73d921f97e7
     name: api
     version: 0.0.5-7-alpha
     engines: {node: '20'}
@@ -4719,7 +4719,7 @@ packages:
       react-dom: '18'
     dependencies:
       ahooks: 3.7.9(react@18.2.0)
-      api: github.com/yz13-env/api/e7d565ff369b4adfed5a6429837b90aca5eea08d(react-dom@18.2.0)(react@18.2.0)
+      api: github.com/yz13-env/api/8f12394ab8361cfb29676ed5fc9fe73d921f97e7(react-dom@18.2.0)(react@18.2.0)
       firebase: 10.7.2
       jsonwebtoken: 8.5.1
       luxon: 3.4.4
@@ -4752,7 +4752,7 @@ packages:
       '@radix-ui/react-separator': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-slot': 1.0.2(@types/react@18.2.48)(react@18.2.0)
       ahooks: 3.7.9(react@18.2.0)
-      api: github.com/yz13-env/api/e7d565ff369b4adfed5a6429837b90aca5eea08d(react-dom@18.2.0)(react@18.2.0)
+      api: github.com/yz13-env/api/8f12394ab8361cfb29676ed5fc9fe73d921f97e7(react-dom@18.2.0)(react@18.2.0)
       class-variance-authority: 0.7.0
       clsx: 2.1.0
       firebase: 10.7.2

@@ -1,24 +1,21 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import SendedInvites from "../../_components/sended-invites"
+import { getTeam } from "@/helpers/getTeam"
+import InviteSearch from "../../_components/invite-search"
 
-const page = () => {
+type Props = {
+  params: {
+    teamId: string
+  }
+}
+const page = async({ params }: Props) => {
+  const { teamId: providedTeamId } = params
+  const { team, teamId, user } = await getTeam(providedTeamId)
+  const members = team ? [ ...team.members, team.founder ] : []
+  if (!teamId) return null
   return (
-    <div className="w-full h-full flex items-start gap-4 pt-6">
-      <div className="w-80 shrink-0 h-full border-r flex flex-col gap-4 pr-6">
-        <span className="text-lg font-semibold">Активные приглашения</span>
-        <div className="w-full h-full flex flex-col">
-          <div className="w-full h-9 rounded-md bg-muted"></div>
-        </div>
-      </div>
-      <div className="w-full pt-3">
-        <div className="w-full max-w-3xl mx-auto h-fit flex items-center gap-4">
-          <Input placeholder="Введите ник пользователя..." />
-          <Button>Найти</Button>
-        </div>
-        <div className="w-full h-full max-w-3xl mx-auto flex flex-col py-4">
-          <div className="w-full h-9 rounded-md bg-muted"></div>
-        </div>
-      </div>
+    <div style={{ height: 'calc(100vh - ((48px * 2) + 49px))' }} className="w-full flex items-start gap-4">
+      <SendedInvites teamId={teamId} />
+      <InviteSearch teamId={teamId} members={members} />
     </div>
   )
 }

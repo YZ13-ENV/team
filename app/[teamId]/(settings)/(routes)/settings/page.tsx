@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
 import { BiRightArrowAlt } from "react-icons/bi"
 import SettingsBlock from "../../_components/settings-block"

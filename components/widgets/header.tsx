@@ -14,7 +14,7 @@ type Props = {
 const Header = ({ teamId, teamName }: Props) => {
   return (
     <>
-      <div className="w-full h-fit flex items-center justify-between px-6 pt-2 pb-1 bg-background">
+      <div className="w-full shrink-0 h-fit flex items-center justify-between px-6 pt-2 pb-1 bg-background">
         <div className="w-fit h-9 flex items-center mr-4 gap-4">
           <Image src={cdn('dm/icons/team-dark.svg')} width={32} height={32} alt='logo' />
           <span className='capitalize text-xl font-semibold'>Team / { teamName }</span>
@@ -27,7 +27,7 @@ const Header = ({ teamId, teamName }: Props) => {
       </div>
       {
         process.env.NODE_ENV === 'development'
-        ? <div className="w-full h-fit flex items-center gap-2 sticky top-0 px-6 pt-1 pb-2 bg-background border-b">
+        ? <div className="w-full h-fit flex shrink-0 items-center gap-2 sticky top-0 px-6 pt-1 pb-2 bg-background border-b">
           <Nav teamId={teamId} />
         </div>
         : <DynamicNav teamId={teamId} />

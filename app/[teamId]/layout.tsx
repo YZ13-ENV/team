@@ -12,14 +12,12 @@ const layout = async({ children, params }: Props) => {
   const { teamId: providedTeamId } = params
   const { team, teamId, user } = await getTeam(providedTeamId)
   return (
-    <main className="w-full h-screen flex flex-col justify-between overflow-y-hidden">
-      <div className="w-full px-6 py-2">
-        <Header teamId={teamId} teamName={team?.name} />
-      </div>
+    <>
+      <Header teamId={teamId} teamName={team?.name} />
       <TeamContainer noTeam={!(!!teamId)}>
         { children }
       </TeamContainer>
-    </main>
+    </>
   )
 }
 

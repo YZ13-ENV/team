@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geologica } from "next/font/google";
 import "./globals.css";
 import "ui/dist/style.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const first_font = Geologica({
   subsets: ["latin", "cyrillic"],
@@ -22,7 +23,8 @@ export default async function RootLayout({
       lang="en"
       className={`${first_font.className} ${first_font.variable}`}
     >
-      <body className="min-h-screen dark">
+      <body id='root' className="min-h-screen dark">
+        <Toaster />
         {children}
       </body>
     </html>

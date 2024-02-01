@@ -11,7 +11,7 @@ const TeamContainer = ({ children, noTeam=true }: Props) => {
   const [user, loading] = useAuthState(auth)
   if (!user && !loading) return redirect('/')
   return (
-    <div className="w-full h-full border-t mx-auto p-6 overflow-y-auto">
+    <div className="w-full h-full mx-auto p-6">
       { user && children }
     </div>
   )

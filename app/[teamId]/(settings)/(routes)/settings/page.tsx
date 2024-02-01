@@ -8,6 +8,8 @@ import { getTeam } from "@/helpers/getTeam"
 import TeamSignature from "../../_components/blocks/team-signature"
 import TeamDescription from "../../_components/blocks/team-description"
 import AvatarBlock from "../../_components/blocks/team-avatar"
+import Link from "next/link"
+import TeamLinkWeb from "../../_components/blocks/team-link-web"
 
 type Props = {
   params: {
@@ -41,12 +43,7 @@ const page = async({ params }: Props) => {
       <Separator />
       <div className="max-w-7xl mx-auto w-full">
 
-        <SettingsBlock noSeparator
-          title="Ссылка"
-          description="Укажите ссылку на страницу команды"
-        >
-          <Input placeholder="Введите ссылку" />
-        </SettingsBlock>
+        <TeamLinkWeb teamId={teamId} links={team?.links} />
 
       </div>
       <Separator />
@@ -60,7 +57,9 @@ const page = async({ params }: Props) => {
           title="Управление составом команды"
           description="Пригласить новых, исключить старых"
         >
-          <Button className="w-fit gap-2" variant='default'>Перейти к управлению <BiRightArrowAlt /></Button>
+          <Button className="w-fit gap-2" variant='default' asChild>
+            <Link href={`/${teamId}/members`}>Перейти к управлению <BiRightArrowAlt /></Link>
+          </Button>
         </SettingsBlock>
 
       </div>
@@ -76,7 +75,7 @@ const page = async({ params }: Props) => {
           title="Удалить команду"
           description="Удалится и весь контент, созданный командой"
         >
-          <Button className="w-fit" variant='destructive'>Удалить команду</Button>
+          <Button disabled className="w-fit" variant='destructive'>Удалить команду</Button>
         </SettingsBlock>
 
       </div>

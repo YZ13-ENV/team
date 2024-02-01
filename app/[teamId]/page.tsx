@@ -2,6 +2,8 @@ import { getTeam } from "@/helpers/getTeam"
 import Image from "next/image"
 import { HiOutlineUserGroup } from "react-icons/hi"
 import LastShots from "./_components/last-shots"
+import { keys } from "lodash"
+import Link from "next/link"
 
 type Props = {
   params: {
@@ -37,10 +39,25 @@ export default async function Home({ params }: Props) {
           <span className="text-muted-foreground text-sm">{ team?.about || 'Не указано' }</span>
         </div>
         <div className="w-1/3 grid lg:grid-cols-2 grid-cols-1 lg:grid-rows-2 grid-rows-4 gap-2">
-          <div className="w-full h-full flex flex-col justify-center">
-            <span className="text-xs text-muted-foreground">Сайт</span>
-            <span className="text-sm line-clamp-1 text-accent-foreground">https://darkmaterial.space</span>
-          </div>
+          {
+            team && team.links && keys(team.links)
+            .map((link_key) => {
+              if (!team.links) return null
+              const key = link_key
+              const link = team.links[link_key as 'web']
+              const label = key === 'web' ? 'Сайт' : ''
+              return (
+                <div key={key} className="w-full h-full flex flex-col justify-center">
+                  <span className="text-xs text-muted-foreground">{ label }</span>
+                  {
+                    link
+                    ? <Link href={link} className="text-sm line-clamp-1 text-accent-foreground">{link}</Link>
+                    : <span className="text-sm line-clamp-1 text-accent-foreground">Не указано</span>
+                  }
+                </div>
+              )
+            })
+          }
         </div>
       </div>
       { teamId && <LastShots teamId={teamId} /> }

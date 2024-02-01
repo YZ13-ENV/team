@@ -16,7 +16,7 @@ const Header = ({ teamId, teamName }: Props) => {
     <>
       <div className="w-full h-fit flex items-center justify-between px-6 pt-2 pb-1 bg-background">
         <div className="w-fit h-9 flex items-center mr-4 gap-4">
-          <Image src={cdn('dm/icons/DM-dark.svg')} width={32} height={32} alt='logo' />
+          <Image src={cdn('dm/icons/team-dark.svg')} width={32} height={32} alt='logo' />
           <span className='capitalize text-xl font-semibold'>Team / { teamName }</span>
         </div>
         <div className="w-fit h-fit flex items-center gap-2">

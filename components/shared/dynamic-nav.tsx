@@ -14,7 +14,7 @@ const DynamicNav = ({ teamId }: Props) => {
     <div className="w-full h-fit flex items-center gap-2 sticky top-0 px-6 pt-1 pb-2 bg-background border-b">
       {
         pos && pos.top >= 50 &&
-        <Image src={cdn('dm/icons/DM-dark.svg')} width={24} height={24} alt='logo' />
+        <Image src={cdn('dm/icons/team-dark.svg')} width={24} height={24} alt='logo' />
       }
       <Nav teamId={teamId} />
     </div>

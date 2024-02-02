@@ -1,4 +1,3 @@
-import React from 'react'
 import Notifications from '../shared/notifications'
 import { ProjectsGrid } from 'ui'
 import User from '../shared/user-circle'
@@ -6,6 +5,7 @@ import DynamicNav from '../shared/dynamic-nav'
 import Image from 'next/image'
 import { cdn } from 'api'
 import Nav from '@/app/_components/nav'
+import Link from 'next/link'
 
 
 export type NavLayout = 'visitor' | 'member' | 'founder'
@@ -19,7 +19,9 @@ const Header = ({ teamId, teamName, nav='visitor' }: Props) => {
     <>
       <div className="w-full shrink-0 h-fit flex items-center justify-between px-6 pt-2 pb-1 bg-background">
         <div className="w-fit h-9 flex items-center mr-4 gap-4">
-          <Image src={cdn('dm/icons/team-dark.svg')} width={32} height={32} alt='logo' />
+          <Link href={teamId ? `/${teamId}` : '/'}>
+            <Image src={cdn('dm/icons/team-dark.svg')} width={32} height={32} alt='logo' />
+          </Link>
           <span className='capitalize text-xl font-semibold'>Team / { teamName }</span>
         </div>
         <div className="w-fit h-fit flex items-center gap-2">

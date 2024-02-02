@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button"
 import MembersGroup from "@/components/widgets/members-group"
 import { getTeam } from "@/helpers/getTeam"
+import { team as teamAPI } from 'api'
 import Image from "next/image"
+import { redirect } from "next/navigation"
 import { HiOutlineUserGroup } from "react-icons/hi"
+import InviteControls from "../../../_components/invite-controls"
 
 type Props = {
   params: {
@@ -12,8 +15,15 @@ type Props = {
 }
 const page = async({ params }: Props) => {
   const { inviteId, teamId: providedTeamId } = params
-  const { team, teamId, user } = await getTeam(providedTeamId)
+  const invite = await teamAPI.invite.get(providedTeamId, inviteId)
+  const { team } = await getTeam(providedTeamId)
   const members = team ? [...team.members, team.founder] : []
+
+  if (!invite) return (
+    <div style={{ height: 'calc(100dvh - (48px*2) - 49px)' }} className="w-full h-fit flex flex-col items-center justify-center gap-12">
+      <span>Несуществующее приглашение!</span>
+    </div>
+  )
   return (
     <div style={{ height: 'calc(100dvh - (48px*2) - 49px)' }} className="w-full h-fit flex flex-col items-center justify-center gap-12">
       <div className="max-w-md w-full flex flex-col gap-6">
@@ -31,10 +41,7 @@ const page = async({ params }: Props) => {
           <MembersGroup hideNames members={members}  size={48} />
         </div>
       </div>
-      <div className="w-full h-fit flex items-center justify-center gap-3 max-w-md">
-        <Button disabled className="w-1/2" variant='outline'>Отклонить</Button>
-        <Button disabled className="w-1/2" variant='default'>Принять</Button>
-      </div>
+      <InviteControls teamId={providedTeamId} inviteId={inviteId} />
     </div>
   )
 }

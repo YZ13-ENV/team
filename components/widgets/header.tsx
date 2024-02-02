@@ -7,11 +7,14 @@ import Image from 'next/image'
 import { cdn } from 'api'
 import Nav from '@/app/_components/nav'
 
+
+export type NavLayout = 'visitor' | 'member' | 'founder'
 type Props = {
   teamName?: string
   teamId?: string
+  nav?: NavLayout
 }
-const Header = ({ teamId, teamName }: Props) => {
+const Header = ({ teamId, teamName, nav='visitor' }: Props) => {
   return (
     <>
       <div className="w-full shrink-0 h-fit flex items-center justify-between px-6 pt-2 pb-1 bg-background">
@@ -28,7 +31,7 @@ const Header = ({ teamId, teamName }: Props) => {
       {
         process.env.NODE_ENV === 'development'
         ? <div className="w-full h-fit flex shrink-0 items-center gap-2 sticky top-0 px-6 pt-1 pb-2 bg-background border-b">
-          <Nav teamId={teamId} />
+          <Nav teamId={teamId} nav={nav} />
         </div>
         : <DynamicNav teamId={teamId} />
       }

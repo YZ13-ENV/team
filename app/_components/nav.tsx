@@ -7,14 +7,16 @@ import { HiOutlineCollection, HiOutlineUserGroup, HiOutlineUserAdd } from "react
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { BiCog } from "react-icons/bi";
 import { useMediaQuery } from "react-responsive";
+import { NavLayout } from '@/components/widgets/header'
 
 type NavTab = {
   value: string
   label: string
   icon?: JSX.Element
+  nav?: NavLayout
 }
-const map = (prefix?: string): NavTab[] => {
-  return [
+const map = (prefix?: string, nav?: NavLayout): NavTab[] => {
+  const tabs = [
     {
       value: '',
       label: 'Обзор',
@@ -22,7 +24,7 @@ const map = (prefix?: string): NavTab[] => {
     },
     {
       value: '/dashboard',
-      label: 'Управление командой',
+      label: 'Доска',
       icon: <MdOutlineManageAccounts size={18} className='shrink-0' />
       },
     {
@@ -40,18 +42,31 @@ const map = (prefix?: string): NavTab[] => {
       label: 'Настройки',
       icon: <BiCog size={18} className='shrink-0' />
     }
-  ].map(tab => ({ ...tab, value: prefix ? prefix + tab.value : tab.value }))
+  ]
+  const founder = ['', '/dashboard', '/members', '/invite', '/settings']
+  const member = ['', '/dashboard', '/members']
+  const visitor = ['', '/members']
+  const founder_tabs = tabs.filter(tab => founder.includes(tab.value))
+  const member_tabs = tabs.filter(tab => member.includes(tab.value))
+  const visitor_tabs = tabs.filter(tab => visitor.includes(tab.value))
+  const implementPrefix = (tabs: NavTab[]) => tabs.map(tab => ({ ...tab, value: prefix ? prefix + tab.value : tab.value }))
+  if (nav === 'member') return implementPrefix(member_tabs)
+  if (nav === 'visitor') return implementPrefix(visitor_tabs)
+  return implementPrefix(founder_tabs)
 }
 type Props = {
   teamId?: string
+  nav?: NavLayout
 }
-const Nav = ({ teamId }: Props) => {
+const Nav = ({ teamId, nav }: Props) => {
   const isMobile = useMediaQuery({ query: '(max-width: 836px)' })
   const path = usePathname()
   const prefixAsPath = `/${teamId}`
-  const withPrefix = map(prefixAsPath)
+  const withPrefix = map(prefixAsPath, nav)
   const section = useMemo(() => {
-    const detected = withPrefix.find(item => item.value === path)
+    const parsedPath = path.split('/').filter(item => item).slice(0, 2).join('/')
+    const pathWithPrefix = `/${parsedPath}`
+    const detected = withPrefix.find(item => pathWithPrefix === item.value)
     return detected ? detected.value : teamId ? teamId + '' : ''
   }, [path, teamId, withPrefix])
   const { push } = useRouter()

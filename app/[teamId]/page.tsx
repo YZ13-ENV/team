@@ -12,7 +12,7 @@ type Props = {
 }
 export default async function Home({ params }: Props) {
   const { teamId: providedTeamId } = params
-  const { team, teamId, user } = await getTeam(providedTeamId)
+  const { team, teamId } = await getTeam(providedTeamId)
   return (
     <div style={{ height: 'calc(100% - 36px)' }} className="w-full pt-4 max-w-7xl mx-auto flex flex-col max-h-full gap-4">
       <div className="w-fit h-fit flex flex-col gap-2 py-12">

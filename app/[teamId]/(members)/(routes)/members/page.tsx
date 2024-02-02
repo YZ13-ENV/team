@@ -1,16 +1,19 @@
-import { getVisitorId } from "@/helpers/cookies"
-import { team, user } from "api"
 import MemberRow from "../../_components/member-row"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "@/components/ui/button"
 import { BiGroup } from "react-icons/bi"
+import { getTeam } from "@/helpers/getTeam"
+import MembersTable from "../../_components/members-table"
 
-const page = async() => {
-  const visitorId = getVisitorId()
-  const short = visitorId ? await user.byId.short(visitorId) : null
-  const teamId = short ? short.teamId : null
-  const teamInfo = teamId ? await team.get(teamId) : null
-  const members = teamInfo ? [ ...teamInfo.members, teamInfo.founder ] : []
+type Props = {
+  params: {
+    teamId: string
+  }
+}
+const page = async({ params }: Props) => {
+  const { teamId: providedTeamId } = params
+  const { team, nav } = await getTeam(providedTeamId)
+  const members = team ? [ ...team.members, team.founder ] : []
   return (
     <div style={{ height: 'calc(100% - 36px)' }} className="w-full py-4">
       <div className="w-full h-fit pb-4 flex items-center gap-4">
@@ -26,23 +29,7 @@ const page = async() => {
           <Button size='sm' variant='default'>Пригласить</Button>
         </div>
       </div>
-      <table className="w-full h-fit max-h-full">
-        <thead>
-          <tr className="text-muted-foreground h-12 border-b">
-            <td className="w-6 px-1"><Checkbox /></td>
-            <td className="px-3">Имя</td>
-            <td className="px-3">Никнейм</td>
-            <td className="px-3">Позиция</td>
-            <td className="px-3">Почта</td>
-            <td className="w-9"></td>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            members.map(member => <MemberRow key={member} member={member} /> )
-          }
-        </tbody>
-      </table>
+      <MembersTable nav={nav} members={members} />
     </div>
   )
 }

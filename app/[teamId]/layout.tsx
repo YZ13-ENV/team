@@ -10,11 +10,11 @@ type Props = {
 }
 const layout = async({ children, params }: Props) => {
   const { teamId: providedTeamId } = params
-  const { team, teamId, user } = await getTeam(providedTeamId)
+  const { team, teamId, nav } = await getTeam(providedTeamId)
   return (
     <>
-      <Header teamId={teamId} teamName={team?.name} />
-      <TeamContainer noTeam={!(!!teamId)}>
+      <Header nav={nav} teamId={teamId} teamName={team?.name} />
+      <TeamContainer>
         { children }
       </TeamContainer>
     </>

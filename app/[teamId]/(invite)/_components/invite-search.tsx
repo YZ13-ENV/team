@@ -8,6 +8,7 @@ import { ShortUserData, team, user as userAPI } from "api"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
+import { BiLoaderAlt } from "react-icons/bi"
 
 type Props = {
   members?: string[]
@@ -23,7 +24,9 @@ const InviteSearch = ({ teamId, members }: Props) => {
   const { refresh } = useRouter()
   const sendInvite = async() => {
     if (user) {
+      setLoading(true)
       await team.invite.invite(teamId, user.uid)
+      setLoading(false)
       refresh()
     }
   }
@@ -41,12 +44,15 @@ const InviteSearch = ({ teamId, members }: Props) => {
         <Input placeholder="Введите ник пользователя..." disabled={disabled}
         value={text} onChange={e => setText(e.target.value)} />
       </div>
-      <div className="flex flex-col w-full h-full max-w-3xl py-4 mx-auto">
+      <div className="flex flex-col w-full h-full max-w-3xl py-6 mx-auto">
         {
           target
           ? <div className="flex items-center justify-between w-full h-9">
             <Member member={target} size={32} />
-            <Button onClick={sendInvite} disabled={inviteDisabled}>Пригласить</Button>
+            <Button onClick={sendInvite} disabled={inviteDisabled} className="gap-2">
+              { loading && <BiLoaderAlt className="animate-spin" /> }
+              Пригласить
+            </Button>
           </div>
           : null
         }

@@ -1,4 +1,5 @@
 import { team } from "api"
+import SendedInviteUser from "./sended-invite-user"
 
 type Props = {
   teamId: string
@@ -10,10 +11,8 @@ const SendedInvites = async({ teamId }: Props) => {
       <span className="text-lg font-semibold">Активные приглашения</span>
       <div className="w-full h-full flex flex-col">
         {
-          invites.length !== 0
-          ? invites.map(invite =>
-            <div key={invite.doc_id} className="w-full h-9 rounded-md bg-muted"></div>
-          )
+          !!invites.length
+          ? invites.map(invite => <SendedInviteUser key={invite.doc_id} invite={invite} /> )
           : <div className="w-full h-full flex items-center justify-center">
             <span className="text-sm text-muted-foreground">Нет активных приглашений</span>
           </div>

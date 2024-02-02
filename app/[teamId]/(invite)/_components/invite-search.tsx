@@ -2,12 +2,10 @@
 import Member from "@/components/shared/member/loaded"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { auth } from "@/utils/app"
 import { useDebounceEffect } from "ahooks"
 import { ShortUserData, team, user as userAPI } from "api"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import { useAuthState } from "react-firebase-hooks/auth"
 import { BiLoaderAlt } from "react-icons/bi"
 
 type Props = {
@@ -15,7 +13,6 @@ type Props = {
   teamId: string
 }
 const InviteSearch = ({ teamId, members }: Props) => {
-  const [user] = useAuthState(auth)
   const [text, setText] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
   const [target, setTarget] = useState<ShortUserData | null>(null)
@@ -23,9 +20,9 @@ const InviteSearch = ({ teamId, members }: Props) => {
   const inviteDisabled = members && target ? members.includes(target.uid) : false
   const { refresh } = useRouter()
   const sendInvite = async() => {
-    if (user) {
+    if (target) {
       setLoading(true)
-      await team.invite.invite(teamId, user.uid)
+      await team.invite.invite(teamId, target.uid)
       setLoading(false)
       refresh()
     }

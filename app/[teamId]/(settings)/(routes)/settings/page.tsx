@@ -9,6 +9,7 @@ import TeamDescription from "../../_components/blocks/team-description"
 import AvatarBlock from "../../_components/blocks/team-avatar"
 import Link from "next/link"
 import TeamLinkWeb from "../../_components/blocks/team-link-web"
+import { redirect } from "next/navigation"
 
 type Props = {
   params: {
@@ -17,7 +18,8 @@ type Props = {
 }
 const page = async({ params }: Props) => {
   const { teamId: providedTeamId } = params
-  const { team, teamId, user } = await getTeam(providedTeamId)
+  const { team, teamId, nav } = await getTeam(providedTeamId)
+  if (nav === 'member' || nav === 'visitor') redirect(`/${providedTeamId}`)
   return (
     <div className="flex flex-col w-full max-h-full">
       <div className="max-w-7xl mx-auto w-full pb-12 pt-6">

@@ -7,16 +7,21 @@ import { Avatar } from "ui"
 
 type Props = {
   member: string
+  index: number
   nav?: NavLayout
 }
-const MemberRow = async({ member, nav }: Props) => {
+const MemberRow = async({ member, nav, index }: Props) => {
   const data = await user.byId.short(member)
   const showCheckbox = nav === 'founder'
   const shotActions = nav === 'founder'
   if (!data) return null
   return (
-    <tr className="h-12 border-b">
-      { showCheckbox && <td className="w-6 px-1"><Checkbox /></td> }
+    <tr className="h-12 border-b hover:bg-card transition-colors cursor-pointer">
+      {
+        showCheckbox
+        ? <td className="w-6 px-1"><Checkbox /></td>
+        : <td className="w-6 px-1"><span className="text-sm text-muted-foreground">{++index}</span></td>
+      }
       <td className="border-r px-3">
         <div className="w-fit h-fit flex flex-row items-center gap-2">
             {

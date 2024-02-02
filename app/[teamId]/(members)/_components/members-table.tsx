@@ -13,7 +13,11 @@ const MembersTable = ({ members, nav }: Props) => {
     <table className="w-full h-fit max-h-full">
       <thead>
         <tr className="text-muted-foreground h-12 border-b">
-          { showCheckbox && <td className="w-6 px-1"><Checkbox /></td> }
+          {
+            showCheckbox
+            ? <td className="w-6 px-1"><Checkbox /></td>
+            : <td className="w-6 px-1"><span className="text-muted-foreground text-sm">#</span></td>
+          }
           <td className="px-3">Имя</td>
           <td className="px-3">Никнейм</td>
           <td className="px-3">Позиция</td>
@@ -24,7 +28,7 @@ const MembersTable = ({ members, nav }: Props) => {
       <tbody>
         {
           members.map(
-            member => <MemberRow key={member} nav={nav} member={member} />
+            (member, index) => <MemberRow key={member} nav={nav} member={member} index={index} />
           )
         }
       </tbody>

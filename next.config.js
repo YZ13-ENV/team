@@ -1,3 +1,6 @@
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: false,
+})
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
@@ -13,5 +16,4 @@ const nextConfig = {
         optimizeServerReact: true
     }
 };
-
-export default nextConfig;
+module.exports = withBundleAnalyzer(nextConfig)

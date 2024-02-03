@@ -4,7 +4,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { usePathname, useRouter } from "next/navigation"
 import { useMemo } from "react"
 import { HiOutlineCollection, HiOutlineUserGroup, HiOutlineUserAdd } from "react-icons/hi";
-import { MdOutlineManageAccounts } from "react-icons/md";
+import { TbLayoutDashboard } from "react-icons/tb";
 import { BiCog } from "react-icons/bi";
 import { useMediaQuery } from "react-responsive";
 import { NavLayout } from '@/components/widgets/header'
@@ -25,7 +25,7 @@ const map = (prefix?: string, nav?: NavLayout): NavTab[] => {
     {
       value: '/dashboard',
       label: 'Доска',
-      icon: <MdOutlineManageAccounts size={18} className='shrink-0' />
+      icon: <TbLayoutDashboard size={18} className='shrink-0' />
       },
     {
       value: '/members',

@@ -27,7 +27,7 @@ export default async function Home({ params }: Props) {
             <span className="text-base text-muted-foreground">Команда</span>
           </div>
         </div>
-        { team?.signature && <span className="xl:text-5xl text-4xl font-bold text-accent-foreground">{ team?.signature}</span> }
+        { team?.signature && <span className="xl:text-5xl my-4 text-4xl font-bold text-accent-foreground">{ team?.signature}</span> }
       </div>
       {/* <div className="w-fit h-fit flex items-center gap-4">
         <Button variant='outline'>И ещё что-то</Button>

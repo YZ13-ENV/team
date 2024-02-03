@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geologica } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 import "ui/dist/style.css";
-import { Toaster } from "@/components/ui/sonner";
 
 const first_font = Geologica({
   subsets: ["latin", "cyrillic"],

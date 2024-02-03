@@ -1,10 +1,10 @@
 import UserSection from '@/components/shared/user-section'
 import { Button } from '@/components/ui/button'
 import { getTeam } from '@/helpers/getTeam'
-import { cdn } from 'api'
-import Image from 'next/image'
 import { redirect } from 'next/navigation'
 import { StarField } from 'ui'
+import Image from 'next/image'
+import { cdn } from 'api'
 
 const page = async() => {
   const { teamId, user } = await getTeam()

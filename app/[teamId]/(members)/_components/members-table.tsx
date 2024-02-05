@@ -1,12 +1,14 @@
-import { Checkbox } from "@/components/ui/checkbox"
 import MemberRow from "./member-row"
 import { NavLayout } from "@/components/widgets/header"
+import MemberCheckbox from "./member-checkbox"
 
 type Props = {
+  teamId: string
   members: string[]
+  founderId: string
   nav: NavLayout
 }
-const MembersTable = ({ members, nav }: Props) => {
+const MembersTable = ({ founderId, members, teamId, nav }: Props) => {
   const showCheckbox = nav === 'founder'
   const shotActions = nav === 'founder'
   return (
@@ -15,7 +17,7 @@ const MembersTable = ({ members, nav }: Props) => {
         <tr className="text-muted-foreground h-12 border-b">
           {
             showCheckbox
-            ? <td className="w-6 px-1"><Checkbox /></td>
+            ? <td className="w-6 px-1"><MemberCheckbox isRoot members={members} /></td>
             : <td className="w-6 px-1"><span className="text-muted-foreground text-sm">#</span></td>
           }
           <td className="px-3">Имя</td>
@@ -28,7 +30,7 @@ const MembersTable = ({ members, nav }: Props) => {
       <tbody>
         {
           members.map(
-            (member, index) => <MemberRow key={member} nav={nav} member={member} index={index} />
+            (member, index) => <MemberRow key={member} founderId={founderId} teamId={teamId} members={members} nav={nav} member={member} index={index} />
           )
         }
       </tbody>

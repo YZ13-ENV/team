@@ -1,25 +1,28 @@
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
 import { NavLayout } from "@/components/widgets/header"
 import { user } from "api"
-import { BiDotsVerticalRounded } from "react-icons/bi"
 import { Avatar } from "ui"
+import MemberDropdown from "./member-dropdown"
+import MemberCheckbox from "./member-checkbox"
 
 type Props = {
+  founderId: string
+  teamId: string
+  members: string[]
   member: string
   index: number
   nav?: NavLayout
 }
-const MemberRow = async({ member, nav, index }: Props) => {
+const MemberRow = async({ member, founderId, members, teamId, nav, index }: Props) => {
   const data = await user.byId.short(member)
   const showCheckbox = nav === 'founder'
   const shotActions = nav === 'founder'
+  const isFounder = founderId === member
   if (!data) return null
   return (
     <tr className="h-12 border-b hover:bg-card transition-colors cursor-pointer">
       {
         showCheckbox
-        ? <td className="w-6 px-1"><Checkbox /></td>
+        ? <td className="w-6 px-1"><MemberCheckbox id={member} /></td>
         : <td className="w-6 px-1"><span className="text-sm text-muted-foreground">{++index}</span></td>
       }
       <td className="border-r px-3">
@@ -41,7 +44,7 @@ const MemberRow = async({ member, nav, index }: Props) => {
       </td>
       <td className="border-x px-3 text-sm">{ data.position ? <span className="px-2 py-1 rounded-md bg-muted text-sm">{data.position}</span> : 'Не указана' }</td>
       <td className="px-3 text-sm"><span className="">{data.email}</span> </td>
-      { shotActions && <td><Button variant='outline' size='icon'><BiDotsVerticalRounded /></Button></td> }
+      { shotActions && <td><MemberDropdown disabled={isFounder} memberId={member} members={members} teamId={teamId} /></td> }
     </tr>
   )
 }

@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation'
 import { StarField } from 'ui'
 import Image from 'next/image'
 import { cdn } from 'api'
+import Link from 'next/link'
 
 const page = async() => {
   const { teamId, user } = await getTeam()
@@ -31,7 +32,7 @@ const page = async() => {
           user && user.isSubscriber
           ?
           <div className="flex flex-col w-full max-w-md gap-4 mx-auto h-fit">
-            <Button className='w-full'>Создать команду</Button>
+            <Button className='w-full'><Link href='/new/team'>Создать команду</Link></Button>
             <span className='text-xs text-center text-muted-foreground'>
               Вы можете создать команду, или вас могут пригласить в команду. Приглашение вы можете найти в ваших уведомлениях
             </span>

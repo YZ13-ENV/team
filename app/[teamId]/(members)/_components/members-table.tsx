@@ -1,5 +1,5 @@
 import MemberRow from "./member-row"
-import { NavLayout } from "@/components/widgets/header"
+import { NavLayout } from "@/components/widgets/header/default-header"
 import MemberCheckbox from "./member-checkbox"
 
 type Props = {

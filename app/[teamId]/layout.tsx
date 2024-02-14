@@ -1,5 +1,5 @@
 import TeamContainer from "@/components/shared/team-container"
-import Header from "@/components/widgets/header"
+import Header from "@/components/widgets/header/default-header"
 import { getTeam } from "@/helpers/getTeam"
 
 type Props = {

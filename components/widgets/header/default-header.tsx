@@ -1,11 +1,18 @@
-import Notifications from '../shared/notifications'
-import { ProjectsGrid } from 'ui'
-import User from '../shared/user-circle'
-import DynamicNav from '../shared/dynamic-nav'
+import DynamicNav from '../../shared/dynamic-nav'
 import Image from 'next/image'
 import { cdn } from 'api'
 import Nav from '@/app/_components/nav'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
+const UserSection = dynamic(() => import('./user-section'), {
+  ssr: false,
+  loading: () => <div className='w-fit h-fit flex items-center gap-2'>
+    <div className='w-9 aspect-square rounded-full bg-muted animate-pulse' />
+    <div className='w-9 aspect-square rounded-full bg-muted animate-pulse' />
+    <div className='w-9 aspect-square rounded-full bg-muted animate-pulse' />
+    <div className='w-9 aspect-square rounded-full bg-muted animate-pulse' />
+  </div>
+})
 
 
 export type NavLayout = 'visitor' | 'member' | 'founder'
@@ -24,11 +31,7 @@ const Header = ({ teamId, teamName, nav='visitor' }: Props) => {
           </Link>
           <span className='capitalize text-xl font-semibold'>Team / { teamName }</span>
         </div>
-        <div className="w-fit h-fit flex items-center gap-2">
-          <Notifications />
-          <ProjectsGrid />
-          <User />
-        </div>
+        <UserSection />
       </div>
       {
         process.env.NODE_ENV === 'development'

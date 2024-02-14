@@ -1,4 +1,4 @@
-import { NavLayout } from "@/components/widgets/header"
+import { NavLayout } from "@/components/widgets/header/default-header"
 import { user } from "api"
 import { Avatar } from "ui"
 import MemberDropdown from "./member-dropdown"

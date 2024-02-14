@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator"
-import Header from "@/components/widgets/simple-header"
+import Header from "@/components/widgets/header/simple-header"
 import NewTeamForm from "../../_components/new-team-form"
 import { getTeam } from "@/helpers/getTeam"
 

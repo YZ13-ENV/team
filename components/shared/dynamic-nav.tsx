@@ -3,7 +3,7 @@ import Nav from "@/app/_components/nav"
 import { useScroll } from 'ahooks'
 import { cdn } from "api"
 import Image from "next/image"
-import { NavLayout } from "../widgets/header"
+import { NavLayout } from "../widgets/header/default-header"
 import Link from "next/link"
 
 type Props = {

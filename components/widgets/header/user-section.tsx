@@ -1,6 +1,6 @@
-import Notifications from './notifications'
-import { ProjectsGrid } from 'ui'
-import User from './user-circle'
+import Notifications from "@/components/shared/notifications"
+import User from "@/components/shared/user-circle"
+import { ProjectsGrid } from "ui"
 
 const UserSection = () => {
   return (

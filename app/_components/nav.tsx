@@ -7,7 +7,7 @@ import { HiOutlineCollection, HiOutlineUserGroup, HiOutlineUserAdd } from "react
 import { TbLayoutDashboard } from "react-icons/tb";
 import { BiCog } from "react-icons/bi";
 import { useMediaQuery } from "react-responsive";
-import { NavLayout } from '@/components/widgets/header'
+import { NavLayout } from '@/components/widgets/header/default-header'
 
 type NavTab = {
   value: string

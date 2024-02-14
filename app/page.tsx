@@ -1,4 +1,13 @@
-import UserSection from '@/components/shared/user-section'
+import dynamic from 'next/dynamic'
+const UserSection = dynamic(() => import('@/components/widgets/header/user-section'), {
+  ssr: false,
+  loading: () => <div className='w-fit h-fit flex items-center gap-2'>
+    <div className='w-9 aspect-square rounded-full bg-muted animate-pulse' />
+    <div className='w-9 aspect-square rounded-full bg-muted animate-pulse' />
+    <div className='w-9 aspect-square rounded-full bg-muted animate-pulse' />
+    <div className='w-9 aspect-square rounded-full bg-muted animate-pulse' />
+  </div>
+})
 import { Button } from '@/components/ui/button'
 import { getTeam } from '@/helpers/getTeam'
 import { redirect } from 'next/navigation'

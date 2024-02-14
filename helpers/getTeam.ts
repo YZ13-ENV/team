@@ -1,6 +1,6 @@
 import { DocTeam, ShortUserData, team, user } from "api"
 import { getVisitorId } from "./cookies"
-import { NavLayout } from "@/components/widgets/header"
+import { NavLayout } from "@/components/widgets/header/default-header"
 
 type TeamPageConfig = {
   user: ShortUserData | null

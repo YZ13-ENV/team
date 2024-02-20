@@ -1,7 +1,9 @@
-import { Checkbox } from "@/components/ui/checkbox"
 import { getTeam } from "@/helpers/getTeam"
 import { redirect } from "next/navigation"
-import { BiMessageRounded, BiPin } from "react-icons/bi"
+import { team as teamAPI } from 'api'
+import { BiChevronDown } from "react-icons/bi"
+// import { Checkbox } from "@/components/ui/checkbox"
+// import { BiMessageRounded, BiPin } from "react-icons/bi"
 
 type Props = {
   params: {
@@ -11,11 +13,25 @@ type Props = {
 export default async function Home({ params }: Props) {
   const { teamId: providedTeamId } = params
   const { team, teamId, nav, user } = await getTeam(providedTeamId)
+  const config = await teamAPI.task.config.get(providedTeamId)
+  // teamAPI.
   if (nav === 'visitor') return redirect(`/${providedTeamId}`)
   return (
-    <div style={{ height: 'calc(100dvh - 49px - 48px)' }} className="w-full px-6 py-12 flex flex-col max-w-7xl mx-auto gap-2">
-      <span className="text-4xl font-bold">С возвращением, { user?.displayName } </span>
+    <div style={{ minHeight: 'calc(100dvh - 49px - 48px - 48px)' }} className="w-full px-6 py-12 flex flex-col max-w-7xl mx-auto gap-2">
+      <span className="text-4xl font-bold">С возвращением, {user?.displayName} </span>
       <span className="text-muted-foreground">У вас пока что нет задач.</span>
+      <div className="space-y-3 my-6">
+        {
+          config &&
+          config?.statuses
+            .map(status => <div key={status} className="w-full bg-card rounded-xl border p-4">
+              <div className="w-full h-fit flex items-center gap-2">
+                <BiChevronDown size={18} />
+                <span className="text-xl font-bold capitalize">{status}</span>
+              </div>
+            </div>)
+        }
+      </div>
       {/* <div className="w-full h-full flex flex-col my-4">
         <div className="w-full h-fit rounded-lg border p-4 flex items-start gap-4">
           <div className="">

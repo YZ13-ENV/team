@@ -7,7 +7,10 @@ import { user as userAPI } from 'api'
 import { menu } from '@/const/menu-map'
 import { useSession } from 'hooks'
 import { auth } from '@/utils/app'
-
+import dynamic from 'next/dynamic'
+const OneClickAuth = dynamic(() => import("@/components/widgets/one-click-auth"), {
+  ssr: false
+})
 type Props = {
     size?: number
 }
@@ -45,8 +48,11 @@ const User = ({ size=36 }: Props) => {
         .then(data => setIsSubscriber(data ? data.isSubscriber : false))
     },[user])
     return (
-        <UserCircle size={size} isSubscriber={isSubscriber} map={menuWithSignOut} loginLink={link}
-        activeMenu={isTabletOrMobile ? 'mobile' : 'desktop'} user={user as User | undefined} buttonSize='lg' />
+        <>
+            { session && !session.activeUid && <OneClickAuth members={session.members} user={user} onUser={uid => controls('update', uid)} /> }
+            <UserCircle size={size} isSubscriber={isSubscriber} map={menuWithSignOut} loginLink={link}
+            activeMenu={isTabletOrMobile ? 'mobile' : 'desktop'} user={user as User | undefined} buttonSize='lg' />
+        </>
     )
 }
 

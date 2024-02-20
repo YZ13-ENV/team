@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 import "ui/dist/style.css";
 
+
 const first_font = Geologica({
   subsets: ["latin", "cyrillic"],
   weight: ["600", "500", "400", "300", "200"],
@@ -25,7 +26,7 @@ export default async function RootLayout({
     >
       <body id='root' className="min-h-screen dark">
         <Toaster />
-        {children}
+        { children }
       </body>
     </html>
   );

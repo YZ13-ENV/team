@@ -21,7 +21,7 @@ export default async function Home({ params }: Props) {
   const { team, teamId, nav, user } = await getTeam(providedTeamId)
   const config = await teamAPI.task.config.get(providedTeamId)
   const tasks = await teamAPI.task.all(providedTeamId) || []
-  console.log(tasks)
+  // console.log(tasks)
   if (nav === 'visitor') return redirect(`/${providedTeamId}`)
   return (
     <div style={{ minHeight: 'calc(100dvh - 49px - 48px - 48px)' }} className="w-full px-6 py-12 flex flex-col max-w-7xl mx-auto gap-2">

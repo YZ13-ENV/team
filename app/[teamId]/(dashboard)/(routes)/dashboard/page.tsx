@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import NewStatus from "../../_components/new-status"
 import NewTask from "../../_components/new-task"
 import Task from "../../_components/task"
+import TasksSection from "../../_components/tasks-section"
 // import { Checkbox } from "@/components/ui/checkbox"
 // import { BiMessageRounded, BiPin } from "react-icons/bi"
 
@@ -20,7 +21,6 @@ export default async function Home({ params }: Props) {
   const { teamId: providedTeamId } = params
   const { team, teamId, nav, user } = await getTeam(providedTeamId)
   const config = await teamAPI.task.config.get(providedTeamId)
-  const tasks = await teamAPI.task.all(providedTeamId) || []
   // console.log(tasks)
   if (nav === 'visitor') return redirect(`/${providedTeamId}`)
   return (
@@ -35,29 +35,7 @@ export default async function Home({ params }: Props) {
         <NewTask teamId={providedTeamId} uid={user ? user.uid : undefined} statuses={config ? config.statuses : []} />
       </div>
       <NewStatus teamId={providedTeamId} statuses={config?.statuses} />
-      <Accordion type="multiple" className="space-y-3 my-6">
-        {
-          config &&
-          config.statuses
-            .map(status => {
-              const filteredTasks = tasks.filter(task => task.status === status)
-              const tasksCount = filteredTasks.length || 0
-              return (
-                <AccordionItem value={status} key={status}>
-                  <AccordionTrigger className="w-full h-fit flex items-center justify-between">
-                    <span className="text-xl font-bold capitalize">{status} ({tasksCount})</span>
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    {
-                      filteredTasks
-                        .map(task => <Task key={task.doc_id} teamId={providedTeamId} task={task} />)
-                    }
-                  </AccordionContent>
-                </AccordionItem>
-              )
-            })
-        }
-      </Accordion>
+      <TasksSection teamId={providedTeamId} providedConfig={config} />
       {/* <div className="w-full h-full flex flex-col my-4">
         <div className="w-full h-fit rounded-lg border p-4 flex items-start gap-4">
           <div className="">

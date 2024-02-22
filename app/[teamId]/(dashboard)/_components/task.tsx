@@ -2,7 +2,7 @@
 import { Checkbox } from "@/components/ui/checkbox"
 import { DocTeamTask, team } from "api"
 import { useRouter } from "next/navigation"
-
+import TaskDetailsModal from "./task-details/modal-wrapper"
 
 type Props = {
   teamId: string
@@ -15,10 +15,12 @@ const Task = ({ task, teamId }: Props) => {
     refresh()
   }
   return (
-    <div className="w-full min-h-9 flex items-center gap-3">
-      <Checkbox checked={task.checked} onCheckedChange={checked => checkTask(Boolean(checked))} />
-      <span className="text-sm font-medium">{task.name}</span>
-    </div>
+    <TaskDetailsModal task={task} teamId={teamId}>
+      <div className="w-full min-h-9 flex items-center px-3 rounded-lg gap-3 group hover:bg-muted cursor-pointer">
+        <Checkbox checked={task.checked} onCheckedChange={checked => checkTask(Boolean(checked))} />
+        <span className="text-sm font-medium">{task.name}</span>
+      </div>
+    </TaskDetailsModal>
   )
 }
 

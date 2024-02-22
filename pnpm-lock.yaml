@@ -40,7 +40,7 @@ dependencies:
     version: 3.7.9(react@18.2.0)
   api:
     specifier: github:yz13-env/api
-    version: github.com/yz13-env/api/fdab8d3155d6ad1788cdddc6f815e459878d06c9(react-dom@18.2.0)(react@18.2.0)
+    version: github.com/yz13-env/api/bf5af46153df0a78de6686c9df18754ec473e720(react-dom@18.2.0)(react@18.2.0)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -6977,11 +6977,11 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: false
 
-  github.com/yz13-env/api/fdab8d3155d6ad1788cdddc6f815e459878d06c9(react-dom@18.2.0)(react@18.2.0):
-    resolution: {tarball: https://codeload.github.com/yz13-env/api/tar.gz/fdab8d3155d6ad1788cdddc6f815e459878d06c9}
-    id: github.com/yz13-env/api/fdab8d3155d6ad1788cdddc6f815e459878d06c9
+  github.com/yz13-env/api/bf5af46153df0a78de6686c9df18754ec473e720(react-dom@18.2.0)(react@18.2.0):
+    resolution: {tarball: https://codeload.github.com/yz13-env/api/tar.gz/bf5af46153df0a78de6686c9df18754ec473e720}
+    id: github.com/yz13-env/api/bf5af46153df0a78de6686c9df18754ec473e720
     name: api
-    version: 0.0.8
+    version: 0.0.8-1
     engines: {node: '20'}
     peerDependencies:
       react: '18'
@@ -7014,7 +7014,7 @@ packages:
       react-dom: '18'
     dependencies:
       ahooks: 3.7.9(react@18.2.0)
-      api: github.com/yz13-env/api/fdab8d3155d6ad1788cdddc6f815e459878d06c9(react-dom@18.2.0)(react@18.2.0)
+      api: github.com/yz13-env/api/bf5af46153df0a78de6686c9df18754ec473e720(react-dom@18.2.0)(react@18.2.0)
       firebase: 10.7.2
       jsonwebtoken: 8.5.1
       luxon: 3.4.4
@@ -7048,7 +7048,7 @@ packages:
       '@radix-ui/react-separator': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-slot': 1.0.2(@types/react@18.2.48)(react@18.2.0)
       ahooks: 3.7.9(react@18.2.0)
-      api: github.com/yz13-env/api/fdab8d3155d6ad1788cdddc6f815e459878d06c9(react-dom@18.2.0)(react@18.2.0)
+      api: github.com/yz13-env/api/bf5af46153df0a78de6686c9df18754ec473e720(react-dom@18.2.0)(react@18.2.0)
       class-variance-authority: 0.7.0
       clsx: 2.1.0
       firebase: 10.7.2

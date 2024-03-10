@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
-import { Geologica } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
-import "./globals.css";
+import type { Metadata, Viewport } from "next";
+import { Geologica } from "next/font/google";
+import { WebVitals } from "ui";
 import "ui/dist/style.css";
+import "./globals.css";
 
 
 const first_font = Geologica({
@@ -15,6 +16,10 @@ export const metadata: Metadata = {
   title: "Team",
   description: "Created by DM Team",
 };
+export const viewport: Viewport = {
+  themeColor: "#000",
+  colorScheme: "dark"
+}
 
 export default async function RootLayout({
   children,
@@ -26,7 +31,8 @@ export default async function RootLayout({
     >
       <body id='root' className="min-h-screen dark">
         <Toaster />
-        { children }
+        <WebVitals appId="darkmaterial-team" />
+        {children}
       </body>
     </html>
   );

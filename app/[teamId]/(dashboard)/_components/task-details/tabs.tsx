@@ -35,7 +35,7 @@ const TaskTabs = ({ task, teamId, isAuthor = false }: Props) => {
     }
   ]
   return (
-    <Tabs className="px-4 w-full" defaultValue="comments">
+    <Tabs className="px-4 w-full" defaultValue={tabs[1].value}>
       <TabsList className="w-full">
         {
           tabs.map(tab => <TabsTrigger className="w-1/4" value={tab.value} key={tab.value}>{tab.label}</TabsTrigger>)
